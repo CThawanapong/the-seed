@@ -1,0 +1,115 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.TheSeed" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnError">@color/colorOnError</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorBackgroundFloating">@color/colorBackground</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="android:statusBarColor">@color/colorOnPrimary</item>
+        <item name="android:navigationBarColor">@color/colorOnPrimary</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
+    </style>
+
+    <style name="Theme.TheSeed.BaseTheme">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
+    </style>
+
+    <style name="Theme.TheSeed.BaseTheme.Translucent">
+        <item name="android:navigationBarColor">@color/colorSurface</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="Theme.TheSeed.SplashScreen">
+        <item name="android:windowBackground">@drawable/bg_splash_screen</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="AppAlertDialog" parent="Theme.MaterialComponents.DayNight.Dialog.Alert">
+        <item name="colorPrimary">@color/colorOnSurface</item>
+        <item name="android:colorBackground">@color/colorSurface</item>
+    </style>
+
+    <style name="AppBarStyle" />
+
+    <style name="Theme.TheSeed.BaseTheme.Translucent.AppCollapsingToolbar">
+        <item name="collapsedTitleTextAppearance">@style/AppBarCollapseTextAppearance</item>
+        <item name="expandedTitleTextAppearance">@style/AppBarExpandedTextAppearance</item>
+    </style>
+
+    <style name="AppBarCollapseTextAppearance" parent="Theme.TheSeed.BaseTheme.Translucent.AppCollapsingToolbar">
+        <item name="android:textColor">@color/colorOnSurface</item>
+    </style>
+
+    <style name="AppBarExpandedTextAppearance" parent="Theme.TheSeed.BaseTheme.Translucent.AppCollapsingToolbar">
+        <item name="android:textColor">@color/colorOnSurface</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="Widget.MaterialComponents.Toolbar">
+        <!--<item name="android:background">@color/white</item>-->
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColorPrimary">@color/colorOnSurface</item>
+    </style>
+
+    <style name="ToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <style name="Theme.TheSeed.AppBarOverlay" parent="Theme.TheSeed.BaseTheme.Translucent">
+        <item name="colorControlNormal">@color/colorOnSecondary</item>
+    </style>
+
+    <style name="Theme.TheSeed.PopupOverlay" parent="Theme.TheSeed.BaseTheme.Translucent">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnError">@color/colorOnError</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
+
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:windowIsFloating">false</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <!--        <item name="bottomSheetStyle">@style/BottomSheetModalStyle</item>-->
+        <!-- Enable if want to use shape override -->
+    </style>
+</resources>
