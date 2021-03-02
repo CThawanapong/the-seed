@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="org.fealous.theseed">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".TheSeedApplication"
@@ -10,6 +15,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheSeed.BaseTheme.Translucent">
+
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            tools:node="remove" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+
+            <meta-data
+                android:name="org.fealous.theseed.base.initializer.AndroidThreeTenInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="org.fealous.theseed.base.initializer.CaocInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="org.fealous.theseed.base.initializer.DependencyGraphInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="org.fealous.theseed.base.initializer.EpoxyControllerInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="org.fealous.theseed.base.initializer.FirebaseAppInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="org.fealous.theseed.base.initializer.ProviderInstallerInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="org.fealous.theseed.base.initializer.TimberInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="org.fealous.theseed.base.initializer.WebViewWorkaroundInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

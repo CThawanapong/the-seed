@@ -72,10 +72,6 @@ android {
             keyPassword = "android"
         }
         create("release") {
-            storeFile = file("release.keystore")
-            storePassword = "deny-step-stare"
-            keyAlias = "nongcalcal"
-            keyPassword = "verna-skill-cape"
         }
     }
 

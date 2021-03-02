@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">The Seed</string>
+
+    <!-- Crash -->
+    <string name="crash_title">Ooops!</string>
+    <string name="crash_hint">We are sorry, something went terribly wrong.</string>
+    <string name="crash_restart">Restart</string>
+    <string name="crash_close">Close</string>
+    <string name="crash_trace">Stacktrace</string>
 </resources>

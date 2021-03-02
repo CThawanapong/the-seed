@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="collapsing_appbar_height">256dp</dimen>
+    <dimen name="collapsing_appbar_title_margin">188dp</dimen>
+
+    <dimen name="default_card_bottom_sheet_elevation">8dp</dimen>
+
+    <dimen name="default_bottom_navigation_height">56dp</dimen>
+    <dimen name="default_app_bar_offset">8dp</dimen>
+</resources>

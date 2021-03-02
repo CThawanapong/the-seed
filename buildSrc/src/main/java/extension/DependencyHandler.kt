@@ -212,6 +212,17 @@ fun DependencyHandler.addCoreModuleDependencies() {
     kapt(Libraries.arrowMeta)
     compileOnly(Libraries.jetBrainAnnotation)
 
+    //Networking
+    implementation(Libraries.okio)
+    implementation(Libraries.okHttp)
+    implementation(Libraries.okHttpLogging)
+    implementation(Libraries.moshi)
+    implementation(Libraries.moshiLazyAdapter)
+    kapt(Libraries.moshiCodeGen)
+    implementation(Libraries.retrofit)
+    implementation(Libraries.retrofitConverterMoshi)
+    implementation(Libraries.retroFitAdapterRxJava3)
+
     //RX
     implementation(Libraries.rxJava)
     implementation(Libraries.rxKotlin)
