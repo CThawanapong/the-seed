@@ -30,10 +30,6 @@ class FragmentTemplate : BaseFragment(R.layout.fragment_empty) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init(savedInstanceState)
-
-        savedInstanceState?.apply {
-            onRestoreInstanceState(this)
-        }
     }
 
     private fun init(savedInstanceState: Bundle?) {
@@ -51,13 +47,6 @@ class FragmentTemplate : BaseFragment(R.layout.fragment_empty) {
         // Init View instance
         with(mBinding) {
         }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-    }
-
-    private fun onRestoreInstanceState(savedInstanceState: Bundle) {
     }
 
     override val screenName: String

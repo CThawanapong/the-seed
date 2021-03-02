@@ -24,6 +24,7 @@ import javax.inject.Inject
 
 abstract class BaseDialogFragment(@LayoutRes contentLayoutId: Int) : DialogFragment(contentLayoutId), ConsumableEvent {
     companion object {
+        @JvmStatic
         private val TAG = BaseDialogFragment::class.java.simpleName
     }
 

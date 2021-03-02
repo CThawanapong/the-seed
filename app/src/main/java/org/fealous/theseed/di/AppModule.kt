@@ -25,9 +25,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import org.fealous.core.base.epoxy.EpoxyViewBindingModelWithHolder
-import org.fealous.data.base.model.di.APPLICATION_ID
-import org.fealous.data.base.model.di.REMOTE_CONFIG_DEFAULTS
-import org.fealous.data.base.model.di.VERSION_NAME
+import org.fealous.data.base.di.APPLICATION_ID
+import org.fealous.data.base.di.REMOTE_CONFIG_DEFAULTS
+import org.fealous.data.base.di.VERSION_NAME
 import org.fealous.theseed.BuildConfig
 import org.fealous.theseed.R
 import org.fealous.theseed.base.TheSeedDebugTree

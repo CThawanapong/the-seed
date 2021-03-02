@@ -1,4 +1,4 @@
-package org.fealous.data.base.model.di
+package org.fealous.data.base.di
 
 const val APPLICATION_ID = "APPLICATION_ID"
 const val VERSION_NAME = "VERSION_NAME"
