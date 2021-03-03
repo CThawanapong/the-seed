@@ -166,7 +166,9 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) :
                     collapsingToolbarLayout.setupWithNavController(
                         toolbar, findNavController(),
                         AppBarConfiguration(
-                            setOf()
+                            setOf(
+                                R.id.fragmentTemplate
+                            )
                         )
                     )
                     collapsingToolbarLayout.title = toolbarTitle
@@ -174,7 +176,9 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) :
                 else -> toolbar.setupWithNavController(
                     findNavController(),
                     AppBarConfiguration(
-                        setOf()
+                        setOf(
+                            R.id.fragmentTemplate
+                        )
                     )
                 )
             }

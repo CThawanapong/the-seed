@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -58,8 +57,8 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onPostCreate(savedInstanceState, persistentState)
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
 
         //region ViewModel
         mLauncherViewModel.launchCompleteLiveEvent
@@ -87,6 +86,8 @@ class MainActivity : BaseActivity() {
                 showSnackBar(it.message, it.length)
             }
         //endregion
+
+        mLauncherViewModel.loadInit()
     }
 
     private fun initView() {
@@ -146,6 +147,8 @@ class MainActivity : BaseActivity() {
         winParams.flags = flags
         window.attributes = winParams
         window.statusBarColor = Color.TRANSPARENT
+        window.decorView.systemUiVisibility =
+            (window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
     }
 
     private fun showSnackBar(message: String, length: Int) {
