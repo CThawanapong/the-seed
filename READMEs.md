@@ -10,3 +10,5 @@ The Seed is a base starter project to a multi modules MVVM single activity with 
 - Base structures and utils
 - Dagger with Hilt dependency injection
 - Spotless with KtLint
+- Paging 3
+- Epoxy

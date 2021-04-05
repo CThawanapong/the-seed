@@ -5,6 +5,7 @@ import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.components.SingletonComponent
+import org.fealous.theseed.base.initializer.EpoxyControllerInitializer
 import org.fealous.theseed.base.initializer.TimberInitializer
 
 @EntryPoint
@@ -22,4 +23,5 @@ interface InitializerEntryPoint {
     }
 
     fun inject(initializer: TimberInitializer)
+    fun inject(initializer: EpoxyControllerInitializer)
 }

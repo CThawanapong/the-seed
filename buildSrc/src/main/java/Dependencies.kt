@@ -1,17 +1,18 @@
-const val kotlinVersion = "1.4.30"
-const val hiltVersion = "2.32-alpha"
-const val navigationVersion = "2.3.3"
-const val objectboxVersion = "2.9.0"
+const val kotlinVersion = "1.4.32"
+const val hiltVersion = "2.33-beta"
+const val navigationVersion = "2.3.4"
+const val objectboxVersion = "2.9.1"
 const val ktLintVersion = "0.39.0"
 const val okHttpVersion = "4.9.1"
+const val pagingVersion = "3.0.0-beta03"
 
 object BuildPlugins {
     object Versions {
-        const val buildToolsVersion = "4.1.2"
+        const val buildToolsVersion = "4.1.3"
         const val spotlessVersion = "5.10.1"
         const val gmsVersion = "4.3.5"
-        const val firebasePerfVersion = "1.3.4"
-        const val firebaseCrashlyticsVersion = "2.5.0"
+        const val firebasePerfVersion = "1.3.5"
+        const val firebaseCrashlyticsVersion = "2.5.1"
         const val easyLauncherVersion = "1.3.1"
     }
 
@@ -64,7 +65,7 @@ object Libraries {
     object Versions {
         const val coreDesugarVersion = "1.1.1"
         const val multidexVersion = "2.0.1"
-        const val ktxVersion = "1.5.0-beta01"
+        const val ktxVersion = "1.5.0-beta03"
         const val appCompatVersion = "1.3.0-beta01"
         const val cardViewVersion = "1.0.0"
         const val recyclerViewVersion = "1.2.0-beta01"
@@ -84,31 +85,22 @@ object Libraries {
         const val playServiceIIDVersion = "17.0.0"
         const val playServiceTagManagerVersion = "17.0.0"
 
+        const val hiltViewModelJetpackVersion = "1.0.0-alpha03"
         const val hiltJetpackVersion = "1.0.0-alpha03"
 
         const val lifecycleVersion = "2.3.0"
         const val lifecycleExtensionVersion = "2.2.0"
-        const val pagingVersion = "2.1.2"
         const val workManagerVersion = "2.5.0"
-        const val activityVersion = "1.2.0"
-        const val fragmentVersion = "1.3.0"
+        const val activityVersion = "1.2.1"
+        const val fragmentVersion = "1.3.1"
         const val securityCryptoVersion = "1.1.0-alpha02"
         const val viewPagerVersion = "1.1.0-alpha01"
         const val startupVersion = "1.0.0"
         const val windowVersion = "1.0.0-alpha03"
 
-        const val roomVersion = "2.3.0-beta02"
+        const val roomVersion = "2.3.0-beta03"
 
-        const val firebaseAnalyticsVersion = "18.0.2"
-        const val firebaseConfigVersion = "20.0.3"
-        const val firebaseAuthVersion = "20.0.2"
-        const val firebasePerfVersion = "19.1.1"
-        const val firebaseStorageVersion = "19.2.1"
-        const val firebaseMessagingVersion = "21.0.1"
-        const val firebaseInappMessagingVersion = "19.1.4"
-        const val firebaseFirestoreVersion = "22.1.0"
-        const val firebaseAppIndexingVersion = "19.2.0"
-        const val firebaseCrashlyticsVersion = "17.3.1"
+        const val firebaseBoMVersion = "26.8.0"
 
         const val coroutineVersion = "1.4.2"
         const val arrowVersion = "0.11.0"
@@ -117,11 +109,11 @@ object Libraries {
         const val storeVersion = "4.0.0"
 
         const val okioVersion = "2.10.0"
-        const val moshiVersion = "1.11.0"
+        const val moshiVersion = "1.12.0"
         const val moshiLazyAdapterVersion = "2.2"
         const val retrofitVersion = "2.9.0"
 
-        const val rxJavaVersion = "3.0.10"
+        const val rxJavaVersion = "3.0.11"
         const val rxKotlinVersion = "3.0.1"
         const val rxAndroidVersion = "3.0.0"
         const val rxBindingVersion = "4.0.0"
@@ -131,11 +123,11 @@ object Libraries {
         const val rxPermission = "0.12"
         const val rxValidator = "1.3"
 
-        const val epoxyVersion = "4.3.1"
+        const val epoxyVersion = "4.4.1"
         const val glideVersion = "4.12.0"
         const val shimmerVersion = "0.5.0"
 
-        const val threeTenAbpVersion = "1.2.4"
+        const val threeTenAbpVersion = "1.3.0"
         const val timberVersion = "4.7.1"
         const val nineOldAndroidVersion = "2.4.0"
         const val customActivityOnCrashVersion = "2.3.0"
@@ -191,8 +183,9 @@ object Libraries {
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
     const val lifecycleViewmodelSavedstate =
         "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.lifecycleVersion}"
-    const val pagingRuntime = "androidx.paging:paging-runtime-ktx:${Versions.pagingVersion}"
-    const val pagingRxjava2 = "androidx.paging:paging-rxjava2-ktx:${Versions.pagingVersion}"
+    const val pagingRuntime = "androidx.paging:paging-runtime-ktx:${pagingVersion}"
+    const val pagingLiveData = "androidx.paging:paging-guava:${pagingVersion}"
+    const val pagingRxJava3 = "androidx.paging:paging-rxjava3:${pagingVersion}"
     const val workRuntime = "androidx.work:work-runtime-ktx:${Versions.workManagerVersion}"
     const val workRxjava3 = "androidx.work:work-rxjava3:${Versions.workManagerVersion}"
     const val workGcm = "androidx.work:work-gcm:${Versions.workManagerVersion}"
@@ -212,7 +205,7 @@ object Libraries {
     const val daggerHiltAndroid = "com.google.dagger:hilt-android:$hiltVersion"
     const val daggerHiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:$hiltVersion"
     const val hiltLifecycleViewModel =
-        "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltJetpackVersion}"
+        "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltViewModelJetpackVersion}"
     const val hiltNavigation =
         "androidx.hilt:hilt-navigation-fragment:${Versions.hiltJetpackVersion}"
     const val hiltWork = "androidx.hilt:hilt-work:${Versions.hiltJetpackVersion}"
@@ -224,24 +217,17 @@ object Libraries {
     const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
 
     //Firebase
-    const val firebaseCore =
-        "com.google.firebase:firebase-analytics-ktx:${Versions.firebaseAnalyticsVersion}"
-    const val firebaseConfig =
-        "com.google.firebase:firebase-config-ktx:${Versions.firebaseConfigVersion}"
-    const val firebaseAuth = "com.google.firebase:firebase-auth-ktx:${Versions.firebaseAuthVersion}"
-    const val firebasePerf = "com.google.firebase:firebase-perf-ktx:${Versions.firebasePerfVersion}"
-    const val firebaseStorage =
-        "com.google.firebase:firebase-storage-ktx:${Versions.firebaseStorageVersion}"
-    const val firebaseMessaging =
-        "com.google.firebase:firebase-messaging-ktx:${Versions.firebaseMessagingVersion}"
-    const val firebaseInappMessaging =
-        "com.google.firebase:firebase-inappmessaging-display-ktx:${Versions.firebaseInappMessagingVersion}"
-    const val firebaseFirestore =
-        "com.google.firebase:firebase-firestore-ktx:${Versions.firebaseFirestoreVersion}"
-    const val firebaseAppIndexing =
-        "com.google.firebase:firebase-appindexing:${Versions.firebaseAppIndexingVersion}"
-    const val firebaseCrashlytics =
-        "com.google.firebase:firebase-crashlytics-ktx:${Versions.firebaseCrashlyticsVersion}"
+    const val firebaseBoM = "com.google.firebase:firebase-bom:${Versions.firebaseBoMVersion}"
+    const val firebaseCore = "com.google.firebase:firebase-analytics-ktx"
+    const val firebaseConfig = "com.google.firebase:firebase-config-ktx"
+    const val firebaseAuth = "com.google.firebase:firebase-auth-ktx"
+    const val firebasePerf = "com.google.firebase:firebase-perf-ktx"
+    const val firebaseStorage = "com.google.firebase:firebase-storage-ktx"
+    const val firebaseMessaging = "com.google.firebase:firebase-messaging-ktx"
+    const val firebaseInappMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx"
+    const val firebaseFirestore = "com.google.firebase:firebase-firestore-ktx"
+    const val firebaseAppIndexing = "com.google.firebase:firebase-appindexing"
+    const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics-ktx"
 
     //Kotlin
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -322,7 +308,7 @@ object Libraries {
     //UI
     const val epoxy = "com.airbnb.android:epoxy:${Versions.epoxyVersion}"
     const val epoxyProcessor = "com.airbnb.android:epoxy-processor:${Versions.epoxyVersion}"
-    const val epoxyPaging = "com.airbnb.android:epoxy-paging:${Versions.epoxyVersion}"
+    const val epoxyPaging = "com.airbnb.android:epoxy-paging3:${Versions.epoxyVersion}"
     const val epoxyGlidePreloading =
         "com.airbnb.android:epoxy-glide-preloading:${Versions.epoxyVersion}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
@@ -372,6 +358,7 @@ object TestLibraries {
     const val extJunit = "androidx.test.ext:junit-ktx:${Versions.extJunitVersion}"
     const val truth = "androidx.test.ext:truth:${Versions.truthVersion}"
     const val archCoreTest = "androidx.arch.core:core-testing:${Versions.archCoreTestingVersion}"
+    const val pagingCommon = "androidx.paging:paging-common:${pagingVersion}"
     const val kotlinJunit = "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}"
     const val mockitoCore = "org.mockito:mockito-core:${Versions.mockitoVersion}"
     const val mockitoInline = "org.mockito:mockito-inline:${Versions.mockitoVersion}"

@@ -9,6 +9,7 @@ import androidx.preference.PreferenceManager
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import androidx.security.crypto.MasterKeys
+import com.airbnb.epoxy.EpoxyAsyncUtil
 import com.airbnb.epoxy.GlidePreloadRequestHolder
 import com.airbnb.epoxy.glidePreloader
 import com.airbnb.epoxy.preload.EpoxyModelPreloader
@@ -26,6 +27,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import org.fealous.core.base.epoxy.EpoxyViewBindingModelWithHolder
 import org.fealous.data.base.di.APPLICATION_ID
+import org.fealous.data.base.di.ASYNC_BACKGROUND_THREAD_HANDLER
 import org.fealous.data.base.di.REMOTE_CONFIG_DEFAULTS
 import org.fealous.data.base.di.VERSION_NAME
 import org.fealous.theseed.BuildConfig
@@ -142,4 +144,9 @@ class AppModule {
                 .firstOrNull() ?: requestManager.loadImage("")
         }
     }
+
+    @Singleton
+    @Provides
+    @Named(ASYNC_BACKGROUND_THREAD_HANDLER)
+    fun provideEpoxyAsyncBackgroundHandler() = EpoxyAsyncUtil.getAsyncBackgroundHandler()
 }

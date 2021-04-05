@@ -98,6 +98,7 @@ dependencies {
     kaptRelease(Libraries.roomCompiler)
 
     //Firebase
+    implementation(platform(Libraries.firebaseBoM))
     implementation(Libraries.firebaseCore)
     implementation(Libraries.firebaseConfig)
 

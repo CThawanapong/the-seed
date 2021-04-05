@@ -76,6 +76,14 @@ android {
     }
 }
 
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.AbstractKotlinCompile::class).all {
+    android.kotlinOptions.freeCompilerArgs += listOf(
+        "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
+        "-Xuse-experimental=kotlinx.coroutines.ObsoleteCoroutinesApi",
+        "-Xopt-in=kotlin.ExperimentalStdlibApi"
+    )
+}
+
 kapt {
     correctErrorTypes = true
     useBuildCache = true

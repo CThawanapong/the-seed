@@ -69,6 +69,14 @@ android {
     }
 }
 
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.AbstractKotlinCompile::class).all {
+    android.kotlinOptions.freeCompilerArgs += listOf(
+        "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
+        "-Xuse-experimental=kotlinx.coroutines.ObsoleteCoroutinesApi",
+        "-Xopt-in=kotlin.ExperimentalStdlibApi"
+    )
+}
+
 kapt {
     correctErrorTypes = true
     useBuildCache = true
@@ -98,7 +106,8 @@ dependencies {
     implementation(Libraries.lifecycleLivedata)
     implementation(Libraries.lifecycleReactivestreams)
     implementation(Libraries.pagingRuntime)
-    implementation(Libraries.pagingRxjava2)
+    implementation(Libraries.pagingLiveData)
+    implementation(Libraries.pagingRxJava3)
 
     //Hilt
     implementation(Libraries.daggerHiltAndroid)
@@ -113,6 +122,7 @@ dependencies {
     kaptRelease(Libraries.roomCompiler)
 
     //Firebase
+    implementation(platform(Libraries.firebaseBoM))
     implementation(Libraries.firebaseCore)
     implementation(Libraries.firebaseConfig)
     implementation(Libraries.firebaseCrashlytics)
