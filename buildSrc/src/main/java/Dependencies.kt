@@ -1,21 +1,23 @@
-const val kotlinVersion = "1.4.32"
-const val hiltVersion = "2.33-beta"
-const val navigationVersion = "2.3.4"
+const val kotlinVersion = "1.5.30"
+const val hiltVersion = "2.38.1"
+const val navigationVersion = "2.3.5"
 const val objectboxVersion = "2.9.1"
-const val ktLintVersion = "0.39.0"
+const val ktLintVersion = "0.41.0"
 const val okHttpVersion = "4.9.1"
-const val pagingVersion = "3.0.0-beta03"
+const val pagingVersion = "3.0.1"
 
 object BuildPlugins {
     object Versions {
-        const val buildToolsVersion = "4.1.3"
-        const val spotlessVersion = "5.10.1"
+        const val buildToolsVersion = "7.0.2"
+        const val spotlessVersion = "5.14.2"
         const val gmsVersion = "4.3.5"
-        const val firebasePerfVersion = "1.3.5"
-        const val firebaseCrashlyticsVersion = "2.5.1"
-        const val easyLauncherVersion = "1.3.1"
+        const val firebasePerfVersion = "1.4.0"
+        const val firebaseCrashlyticsVersion = "2.7.1"
+        const val easyLauncherVersion = "4.0.0"
+        const val jacocoVersion = "0.8.7"
     }
 
+    const val jacocoGradlePlugin = "org.jacoco:org.jacoco.core:${Versions.jacocoVersion}"
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.buildToolsVersion}"
     const val objectBoxGradlePlugin = "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
@@ -41,13 +43,13 @@ object BuildPlugins {
     const val googleServicePlugin = "com.google.gms.google-services"
     const val crashlyticsPlugin = "com.google.firebase.crashlytics"
     const val firebasePerfPlugin = "com.google.firebase.firebase-perf"
-    const val easyLauncherPlugin = "com.akaita.android.easylauncher"
+    const val easyLauncherPlugin = "com.starter.easylauncher"
     const val objectBoxPlugin = "io.objectbox"
 }
 
 object AndroidSdk {
     const val minVersion = 23
-    const val compileVersion = 30
+    const val compileVersion = 31
     const val targetVersion = compileVersion
 }
 
@@ -63,57 +65,58 @@ object AndroidVersion {
 
 object Libraries {
     object Versions {
-        const val coreDesugarVersion = "1.1.1"
+        const val coreDesugarVersion = "1.1.5"
         const val multidexVersion = "2.0.1"
-        const val ktxVersion = "1.5.0-beta03"
-        const val appCompatVersion = "1.3.0-beta01"
+        const val ktxVersion = "1.6.0"
+        const val appCompatVersion = "1.3.1"
         const val cardViewVersion = "1.0.0"
-        const val recyclerViewVersion = "1.2.0-beta01"
+        const val recyclerViewVersion = "1.2.1"
         const val gridLayoutVersion = "1.0.0"
-        const val annotationVersion = "1.2.0-beta01"
+        const val annotationVersion = "1.2.0"
         const val browserVersion = "1.3.0"
-        const val legacyPreferenceVersion = "1.0.0"
-        const val constraintLayoutVersion = "2.0.1"
-        const val materialVersion = "1.3.0-alpha04"
+        const val constraintLayoutVersion = "2.1.0"
+        const val materialVersion = "1.4.0"
         const val installReferrerVersion = "2.2"
         const val tinkVersion = "1.5.0"
-        const val guavaVersion = "30.1-jre"
+        const val guavaVersion = "30.1.1-android"
 
         const val playServiceBaseVersion = "17.6.0"
         const val playServiceFitnessVersion = "20.0.0"
         const val playServiceAuthVersion = "19.0.0"
         const val playServiceIIDVersion = "17.0.0"
         const val playServiceTagManagerVersion = "17.0.0"
+        const val playCoreVersion = "1.10.0"
+        const val playCoreKtxVersion = "1.8.1"
 
-        const val hiltViewModelJetpackVersion = "1.0.0-alpha03"
-        const val hiltJetpackVersion = "1.0.0-alpha03"
+        const val hiltJetpackVersion = "1.0.0"
 
-        const val lifecycleVersion = "2.3.0"
-        const val lifecycleExtensionVersion = "2.2.0"
-        const val workManagerVersion = "2.5.0"
-        const val activityVersion = "1.2.1"
-        const val fragmentVersion = "1.3.1"
-        const val securityCryptoVersion = "1.1.0-alpha02"
-        const val viewPagerVersion = "1.1.0-alpha01"
-        const val startupVersion = "1.0.0"
-        const val windowVersion = "1.0.0-alpha03"
+        const val lifecycleVersion = "2.3.1"
+        const val workManagerVersion = "2.6.0-rc01"
+        const val activityVersion = "1.3.1"
+        const val fragmentVersion = "1.3.6"
+        const val securityCryptoVersion = "1.1.0-alpha03"
+        const val viewPagerVersion = "1.1.0-beta01"
+        const val startupVersion = "1.1.0"
+        const val windowVersion = "1.0.0-beta01"
+        const val biometricVersion = "1.1.0"
+        const val preferenceVersion = "1.1.1"
 
-        const val roomVersion = "2.3.0-beta03"
+        const val roomVersion = "2.3.0"
 
-        const val firebaseBoMVersion = "26.8.0"
+        const val firebaseBoMVersion = "28.4.0"
 
         const val coroutineVersion = "1.4.2"
-        const val arrowVersion = "0.11.0"
+        const val arrowVersion = "0.13.2"
         const val jetbrainAnnotationVersion = "13.0"
 
-        const val storeVersion = "4.0.0"
+        const val storeVersion = "4.0.2-KT15"
 
         const val okioVersion = "2.10.0"
         const val moshiVersion = "1.12.0"
         const val moshiLazyAdapterVersion = "2.2"
         const val retrofitVersion = "2.9.0"
 
-        const val rxJavaVersion = "3.0.11"
+        const val rxJavaVersion = "3.0.13"
         const val rxKotlinVersion = "3.0.1"
         const val rxAndroidVersion = "3.0.0"
         const val rxBindingVersion = "4.0.0"
@@ -123,18 +126,17 @@ object Libraries {
         const val rxPermission = "0.12"
         const val rxValidator = "1.3"
 
-        const val epoxyVersion = "4.4.1"
+        const val epoxyVersion = "4.6.2"
         const val glideVersion = "4.12.0"
         const val shimmerVersion = "0.5.0"
 
-        const val threeTenAbpVersion = "1.3.0"
+        const val threeTenAbpVersion = "1.3.1"
         const val timberVersion = "4.7.1"
         const val nineOldAndroidVersion = "2.4.0"
         const val customActivityOnCrashVersion = "2.3.0"
-        const val eventEmitterVersion = "1.1.0"
+        const val eventEmitterVersion = "1.2.0"
 
-        const val chuckerVersion = "3.4.0"
-        const val hyperionVersion = "0.9.31"
+        const val chuckerVersion = "3.5.1"
     }
 
     const val coreDesugar = "com.android.tools:desugar_jdk_libs:${Versions.coreDesugarVersion}"
@@ -148,8 +150,6 @@ object Libraries {
     const val gridLayout = "androidx.gridlayout:gridlayout:${Versions.gridLayoutVersion}"
     const val coreAnnotation = "androidx.annotation:annotation:${Versions.annotationVersion}"
     const val browser = "androidx.browser:browser:${Versions.browserVersion}"
-    const val legacyPreference =
-        "androidx.legacy:legacy-preference-v14:${Versions.legacyPreferenceVersion}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayoutVersion}"
     const val material = "com.google.android.material:material:${Versions.materialVersion}"
@@ -169,10 +169,10 @@ object Libraries {
         "com.google.android.gms:play-services-iid:${Versions.playServiceIIDVersion}"
     const val playServiceTagManager =
         "com.google.android.gms:play-services-tagmanager:${Versions.playServiceTagManagerVersion}"
+    const val playCore = "com.google.android.play:core:${Versions.playCoreVersion}"
+    const val playCoreKtx = "com.google.android.play:core-ktx:${Versions.playCoreKtxVersion}"
 
     // Architecture Components
-    const val lifecycleExtension =
-        "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleExtensionVersion}"
     const val lifecycleCommon =
         "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycleVersion}"
     const val lifecycleLivedata =
@@ -200,12 +200,12 @@ object Libraries {
     const val viewPager = "androidx.viewpager2:viewpager2:${Versions.viewPagerVersion}"
     const val startup = "androidx.startup:startup-runtime:${Versions.startupVersion}"
     const val window = "androidx.window:window:${Versions.windowVersion}"
+    const val biometric = "androidx.biometric:biometric:${Versions.biometricVersion}"
+    const val preference = "androidx.preference:preference-ktx:${Versions.preferenceVersion}"
 
     //Hilt
     const val daggerHiltAndroid = "com.google.dagger:hilt-android:$hiltVersion"
-    const val daggerHiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:$hiltVersion"
-    const val hiltLifecycleViewModel =
-        "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltViewModelJetpackVersion}"
+    const val daggerHiltAndroidCompiler = "com.google.dagger:hilt-compiler:$hiltVersion"
     const val hiltNavigation =
         "androidx.hilt:hilt-navigation-fragment:${Versions.hiltJetpackVersion}"
     const val hiltWork = "androidx.hilt:hilt-work:${Versions.hiltJetpackVersion}"
@@ -237,7 +237,6 @@ object Libraries {
         "org.jetbrains.kotlinx:kotlinx-coroutines-rx3:${Versions.coroutineVersion}"
     const val jetBrainAnnotation = "org.jetbrains:annotations:${Versions.jetbrainAnnotationVersion}"
     const val arrowCore = "io.arrow-kt:arrow-core:${Versions.arrowVersion}"
-    const val arrowSyntax = "io.arrow-kt:arrow-syntax:${Versions.arrowVersion}"
     const val arrowMeta = "io.arrow-kt:arrow-meta:${Versions.arrowVersion}"
 
     //Store
@@ -294,17 +293,6 @@ object Libraries {
     const val chuckerNoOp =
         "com.github.ChuckerTeam.Chucker:library-no-op:${Versions.chuckerVersion}"
 
-    //Hyperion
-    const val hyperionCore = "com.willowtreeapps.hyperion:hyperion-core:${Versions.hyperionVersion}"
-    const val hyperionPhoenix =
-        "com.willowtreeapps.hyperion:hyperion-phoenix:${Versions.hyperionVersion}"
-    const val hyperionGeiger =
-        "com.willowtreeapps.hyperion:hyperion-geiger-counter:${Versions.hyperionVersion}"
-    const val hyperionTimber =
-        "com.willowtreeapps.hyperion:hyperion-timber:${Versions.hyperionVersion}"
-    const val hyperionNoOp =
-        "com.willowtreeapps.hyperion:hyperion-core-no-op:${Versions.hyperionVersion}"
-
     //UI
     const val epoxy = "com.airbnb.android:epoxy:${Versions.epoxyVersion}"
     const val epoxyProcessor = "com.airbnb.android:epoxy-processor:${Versions.epoxyVersion}"
@@ -321,7 +309,7 @@ object Libraries {
 
     //Other
     const val threetenabp = "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbpVersion}"
-    const val timberVersion = "com.jakewharton.timber:timber:${Versions.timberVersion}"
+    const val timber = "com.jakewharton.timber:timber:${Versions.timberVersion}"
     const val nineOldAndroid = "com.nineoldandroids:library:${Versions.nineOldAndroidVersion}"
     const val customActivityOnCrash =
         "cat.ereza:customactivityoncrash:${Versions.customActivityOnCrashVersion}"
@@ -378,6 +366,12 @@ object TestLibraries {
     const val hiltTesting = "com.google.dagger:hilt-android-testing:${hiltVersion}"
 
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoVersion}"
+    const val espressoContrib = "androidx.test.espresso:espresso-contrib:${Versions.espressoVersion}"
+    const val espressoIntents = "androidx.test.espresso:espresso-intents:${Versions.espressoVersion}"
+    const val espressoAccessibility = "androidx.test.espresso:espresso-accessibility:${Versions.espressoVersion}"
+    const val espressoWeb = "androidx.test.espresso:espresso-web:${Versions.espressoVersion}"
+    const val espressoConcurrent = "androidx.test.espresso.idling:idling-concurrent:${Versions.espressoVersion}"
+    const val espressoIdelingResource = "androidx.test.espresso:espresso-idling-resource:${Versions.espressoVersion}"
     const val idelingResource = "com.jakewharton.espresso:okhttp3-idling-resource:${Versions.idelingResourceVersion}"
     const val uiAutomator = "androidx.test.uiautomator:uiautomator:${Versions.uiAutomatorVersion}"
     const val orchestrator = "androidx.test:orchestrator:${Versions.orchestratorVersion}"

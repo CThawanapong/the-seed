@@ -12,26 +12,40 @@ plugins {
     id(BuildPlugins.crashlyticsPlugin)
     id(BuildPlugins.firebasePerfPlugin)
     id(BuildPlugins.objectBoxPlugin)
-    id(BuildPlugins.easyLauncherPlugin)
+    id(BuildPlugins.easyLauncherPlugin) version (BuildPlugins.Versions.easyLauncherVersion)
     id(BuildPlugins.spotless) version (BuildPlugins.Versions.spotlessVersion)
+    jacoco
+}
+
+jacoco {
+    toolVersion = BuildPlugins.Versions.jacocoVersion
+}
+
+hilt {
+    enableExperimentalClasspathAggregation = true
 }
 
 android {
-    compileSdkVersion(AndroidSdk.compileVersion)
+    compileSdk = AndroidSdk.compileVersion
 
-    lintOptions {
+    useLibrary("android.test.runner")
+    useLibrary("android.test.base")
+    useLibrary("android.test.mock")
+
+    lint {
         disable("MissingTranslation")
+        isCheckReleaseBuilds = false /* https://dagger.dev/hilt/gradle-setup */
         isAbortOnError = false
     }
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
         freeCompilerArgs = listOf("-XXLanguage:+InlineClasses")
     }
 
@@ -41,27 +55,27 @@ android {
 
     defaultConfig {
         applicationId = AndroidVersion.applicationId
-        minSdkVersion(AndroidSdk.minVersion)
-        targetSdkVersion(AndroidSdk.targetVersion)
+        minSdk = AndroidSdk.minVersion
+        targetSdk = AndroidSdk.targetVersion
         versionCode = AndroidVersion.versionCode
         versionName = AndroidVersion.versionName
 
         multiDexEnabled = true
-        resConfigs("en", "th")
+
+        resourceConfigurations.apply {
+            add("en")
+            add("th")
+        }
+
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments(mutableMapOf("enableParallelEpoxyProcessing" to "true"))
+//                arguments(mutableMapOf("enableParallelEpoxyProcessing" to "true"))
             }
         }
-    }
-
-    dexOptions {
-        preDexLibraries = true
-        maxProcessCount = 8
     }
 
     signingConfigs {
@@ -80,9 +94,6 @@ android {
             (this as ExtensionAware).extra["alwaysUpdateBuildId"] = false
             applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
-            firebaseCrashlytics {
-                mappingFileUploadEnabled = false
-            }
 
             withGroovyBuilder {
                 "FirebasePerformance" {
@@ -103,8 +114,9 @@ android {
             isJniDebuggable = false
             isRenderscriptDebuggable = false
             renderscriptOptimLevel = 3
-            isZipAlignEnabled = true
-            setMatchingFallbacks("debug")
+            matchingFallbacks.apply {
+                add("debug")
+            }
         }
         getByName("release") {
             isMinifyEnabled = true
@@ -117,11 +129,12 @@ android {
             isJniDebuggable = false
             isRenderscriptDebuggable = false
             renderscriptOptimLevel = 3
-            isZipAlignEnabled = true
         }
     }
 
-    flavorDimensions("api")
+    flavorDimensions.apply {
+        add("api")
+    }
 
     productFlavors {
         create("dev") {
@@ -129,7 +142,7 @@ android {
             versionName = "${AndroidVersion.versionName}-DEV"
             dimension = "api"
 
-            setManifestPlaceholders(
+            addManifestPlaceholders(
                 mapOf()
             )
 
@@ -141,7 +154,7 @@ android {
             signingConfig = signingConfigs.getByName("release")
             dimension = "api"
 
-            setManifestPlaceholders(
+            addManifestPlaceholders(
                 mapOf()
             )
 
@@ -155,14 +168,18 @@ android {
     }
 
     packagingOptions {
-        exclude("META-INF/LICENSE")
-        exclude("META-INF/MANIFEST.MF")
-        exclude("META-INF/proguard/coroutines.pro")
-        exclude("META-INF/core_release.kotlin_module")
-        exclude("META-INF/library_release.kotlin_module")
-        exclude("META-INF/kotlinx-coroutines-core.kotlin_module")
-        exclude("META-INF/maven/com.google.code.findbugs/jsr305/pom.properties")
-        exclude("META-INF/maven/com.google.code.findbugs/jsr305/pom.xml")
+        resources {
+            excludes.apply {
+                add("META-INF/LICENSE")
+                add("META-INF/MANIFEST.MF")
+                add("META-INF/proguard/coroutines.pro")
+                add("META-INF/core_release.kotlin_module")
+                add("META-INF/library_release.kotlin_module")
+                add("META-INF/kotlinx-coroutines-core.kotlin_module")
+                add("META-INF/maven/com.google.code.findbugs/jsr305/pom.properties")
+                add("META-INF/maven/com.google.code.findbugs/jsr305/pom.xml")
+            }
+        }
     }
 
     testOptions {
@@ -179,23 +196,117 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.AbstractKotlinCompile::class).a
     android.kotlinOptions.freeCompilerArgs += listOf(
         "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
         "-Xuse-experimental=kotlinx.coroutines.ObsoleteCoroutinesApi",
+        "-Xuse-experimental=kotlinx.coroutines.FlowPreview",
+        "-Xopt-in=androidx.paging.ExperimentalPagingApi",
         "-Xopt-in=kotlin.ExperimentalStdlibApi"
     )
+}
+
+afterEvaluate {
+    android.applicationVariants.forEach { variant ->
+        val variantName = variant.name
+        val testTaskName = "test${variantName.capitalize()}UnitTest"
+        tasks.create(name = "${testTaskName}Coverage", type = JacocoReport::class) {
+            dependsOn(testTaskName)
+            group = "Reporting"
+            description =
+                "Generate Jacoco coverage reports for the ${variantName.capitalize()} build."
+            reports {
+                xml.required.set(true)
+                xml.outputLocation.set(file("$buildDir/reports/jacoco/report.xml"))
+                html.required.set(true)
+                html.outputLocation.set(file("$buildDir/coverage-report"))
+            }
+            val exclude = listOf(
+                "**/R.class",
+                "**/R$*.class",
+                "**/BuildConfig.*",
+                "**/Manifest*.*",
+                "**/*Test*.*",
+                "android/**/*.*",
+                "**/*_MembersInjector.class",
+                "**/Dagger*Component.class", // Covers component implementations
+                "**/Dagger*Component\$Builder.class", // Covers component builders
+                "**/*Module_*Factory.class",
+                "**/di/**", // Dependencies Injection
+                "**/com/nongcalcal/app/base/adpter/**",
+                "**/com/nongcalcal/app/base/behavior/**",
+                "**/com/nongcalcal/app/base/decoration/**",
+                "**/com/nongcalcal/app/base/epoxy/**",
+                "**/com/nongcalcal/app/base/event/**",
+                "**/com/nongcalcal/app/base/extension/**",
+                "**/com/nongcalcal/app/base/helper/**",
+                "**/com/nongcalcal/app/base/imagegetter/**",
+                "**/com/nongcalcal/app/base/initializer/**",
+                "**/com/nongcalcal/app/base/interceptor/**",
+                "**/com/nongcalcal/app/base/interfaces/**",
+                "**/com/nongcalcal/app/base/transformation/**",
+                "**/com/nongcalcal/app/base/view/**",
+                "**/com/nongcalcal/app/base/view/action_bottom_sheet/**",
+                "**/com/nongcalcal/app/base/*Template*.*",
+                "**/com/nongcalcal/app/base/*FragmentType*.*",
+                "**/com/nongcalcal/app/base/*Adapter*.*",
+                "**/com/nongcalcal/app/base/*Tree*.*",
+                "**/com/nongcalcal/app/base/*SavedState*.*",
+                "**/com/nongcalcal/app/base/*Service*.*",
+                "**/com/nongcalcal/app/base/*Glide*.*",
+                "**/com/nongcalcal/app/base/*BaseModel*.*",
+                "**/com/nongcalcal/app/crash/**",
+                "**/*JsonAdapter.*", // Moshi Generate Adapter
+                "**/*Model_.*", // Epoxy Generate model
+                "**/controller/**", // Epoxy Model File
+                "**/adapter/**", // Exclude pager adapters
+                "**/relay/***", // Exclude view relay
+                "**/*Activity*.*", // Exclude view testing
+                "**/*Fragment*.*",
+                "**/*Module*.*", // Exclude module files
+                "**/*DialogFragment*.*",
+                "**/*PagerAdapter*.*",
+                "**/*Directions*", // Exclude Nav Direction
+                "**/com/bumptech/glide/**"
+            )
+            val javaClasses = fileTree(
+                mapOf(
+                    "dir" to variant.javaCompileProvider.get().destinationDirectory.asFile.orNull,
+                    "excludes" to exclude
+                )
+            )
+            val kotlinClasses = fileTree(
+                mapOf(
+                    "dir" to "$buildDir/tmp/kotlin-classes/$variantName",
+                    "excludes" to exclude
+                )
+            )
+            afterEvaluate {
+                classDirectories.setFrom(files(listOf(javaClasses, kotlinClasses)))
+                sourceDirectories.setFrom(
+                    files(
+                        listOf(
+                            "$project.projectDir/src/main/java",
+                            "$project.projectDir/src/$variantName/java"
+                        )
+                    )
+                )
+                executionData.setFrom(files("${project.buildDir}/jacoco/$testTaskName.exec"))
+            }
+        }
+    }
 }
 
 kapt {
     correctErrorTypes = true
     useBuildCache = true
+    javacOptions {
+        // These options are normally set automatically via the Hilt Gradle plugin, but we
+        // set them manually to workaround a bug in the Kotlin 1.5.20
+        option("-Adagger.fastInit=ENABLED")
+        option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
+    }
 }
 
 easylauncher {
-    val iconNamesMethod =
-        javaClass.getMethod("iconName", String::class.java).apply { isAccessible = true }
-    iconNamesMethod.invoke(this, "@mipmap/ic_launcher_foreground")
-    val foregroundIconNamesMethod =
-        javaClass.getMethod("foregroundIconNames", Array<String>::class.java)
-            .apply { isAccessible = true }
-    foregroundIconNamesMethod.invoke(this, arrayOf("@mipmap/ic_launcher_foreground"))
+    iconNames.set(listOf("@mipmap/ic_launcher_foreground"))
+
     productFlavors {
         create("dev") {
             setFilters(grayRibbonFilter("Dev"))
@@ -246,6 +357,7 @@ dependencies {
     implementation(project(Modules.AndroidLibrary.DATA))
     implementation(project(Modules.AndroidLibrary.DOMAIN))
     implementation(project(Modules.AndroidLibrary.CORE))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
 
     addAppModuleDependencies()
     addUnitTestDependencies()

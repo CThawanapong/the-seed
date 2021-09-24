@@ -18,7 +18,6 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(Libraries.gridLayout)
     implementation(Libraries.coreAnnotation)
     implementation(Libraries.browser)
-    implementation(Libraries.legacyPreference)
     implementation(Libraries.constraintLayout)
     implementation(Libraries.material)
     implementation(Libraries.viewPager)
@@ -32,9 +31,10 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(Libraries.playServiceAuth)
     implementation(Libraries.playServiceIID)
     implementation(Libraries.playServiceTagManager)
+    implementation(Libraries.playCore)
+    implementation(Libraries.playCoreKtx)
 
     // Architecture Components
-    implementation(Libraries.lifecycleExtension)
     implementation(Libraries.lifecycleCommon)
     implementation(Libraries.lifecycleLivedata)
     implementation(Libraries.lifecycleReactivestreams)
@@ -55,11 +55,12 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(Libraries.securityCrypto)
     implementation(Libraries.startup)
     implementation(Libraries.window)
+    implementation(Libraries.biometric)
+    implementation(Libraries.preference)
 
     //Hilt
     implementation(Libraries.daggerHiltAndroid)
     kapt(Libraries.daggerHiltAndroidCompiler)
-    implementation(Libraries.hiltLifecycleViewModel)
     implementation(Libraries.hiltNavigation)
     implementation(Libraries.hiltWork)
     kapt(Libraries.hiltCompiler)
@@ -89,7 +90,7 @@ fun DependencyHandler.addAppModuleDependencies() {
     implementation(Libraries.coroutine)
     implementation(Libraries.coroutineRxJava3)
     implementation(Libraries.arrowCore)
-    implementation(Libraries.arrowSyntax)
+    implementation(Libraries.arrowMeta)
     kapt(Libraries.arrowMeta)
     compileOnly(Libraries.jetBrainAnnotation)
 
@@ -136,17 +137,6 @@ fun DependencyHandler.addAppModuleDependencies() {
     stageImplementation(Libraries.chucker)
     releaseImplementation(Libraries.chuckerNoOp)
 
-    //Hyperion
-    debugImplementation(Libraries.hyperionCore)
-    debugImplementation(Libraries.hyperionPhoenix)
-    debugImplementation(Libraries.hyperionGeiger)
-    debugImplementation(Libraries.hyperionTimber)
-    stageImplementation(Libraries.hyperionCore)
-    stageImplementation(Libraries.hyperionPhoenix)
-    stageImplementation(Libraries.hyperionGeiger)
-    stageImplementation(Libraries.hyperionTimber)
-    releaseImplementation(Libraries.hyperionNoOp)
-
     //UI
     implementation(Libraries.epoxy)
     kapt(Libraries.epoxyProcessor)
@@ -160,7 +150,7 @@ fun DependencyHandler.addAppModuleDependencies() {
 
     //Other
     implementation(Libraries.threetenabp)
-    implementation(Libraries.timberVersion)
+    implementation(Libraries.timber)
     implementation(Libraries.nineOldAndroid)
 
     //Other UI
@@ -183,7 +173,6 @@ fun DependencyHandler.addCoreModuleDependencies() {
     implementation(Libraries.viewPager)
 
     // Architecture Components
-    implementation(Libraries.lifecycleExtension)
     implementation(Libraries.lifecycleCommon)
     implementation(Libraries.lifecycleLivedata)
     implementation(Libraries.lifecycleReactivestreams)
@@ -202,7 +191,6 @@ fun DependencyHandler.addCoreModuleDependencies() {
     //Hilt
     implementation(Libraries.daggerHiltAndroid)
     kapt(Libraries.daggerHiltAndroidCompiler)
-    implementation(Libraries.hiltLifecycleViewModel)
     implementation(Libraries.hiltNavigation)
     kapt(Libraries.hiltCompiler)
 
@@ -211,7 +199,7 @@ fun DependencyHandler.addCoreModuleDependencies() {
     implementation(Libraries.coroutine)
     implementation(Libraries.coroutineRxJava3)
     implementation(Libraries.arrowCore)
-    implementation(Libraries.arrowSyntax)
+    implementation(Libraries.arrowMeta)
     kapt(Libraries.arrowMeta)
     compileOnly(Libraries.jetBrainAnnotation)
 
@@ -253,7 +241,7 @@ fun DependencyHandler.addCoreModuleDependencies() {
 
     //Other
     implementation(Libraries.threetenabp)
-    implementation(Libraries.timberVersion)
+    implementation(Libraries.timber)
     implementation(Libraries.eventEmitter)
 }
 
@@ -272,7 +260,6 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     implementation(Libraries.viewPager)
 
     // Architecture Components
-    implementation(Libraries.lifecycleExtension)
     implementation(Libraries.lifecycleCommon)
     implementation(Libraries.lifecycleLivedata)
     implementation(Libraries.lifecycleReactivestreams)
@@ -291,7 +278,6 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     //Hilt
     implementation(Libraries.daggerHiltAndroid)
     kapt(Libraries.daggerHiltAndroidCompiler)
-    implementation(Libraries.hiltLifecycleViewModel)
     implementation(Libraries.hiltNavigation)
     kapt(Libraries.hiltCompiler)
 
@@ -300,7 +286,7 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
     implementation(Libraries.coroutine)
     implementation(Libraries.coroutineRxJava3)
     implementation(Libraries.arrowCore)
-    implementation(Libraries.arrowSyntax)
+    implementation(Libraries.arrowMeta)
     kapt(Libraries.arrowMeta)
     compileOnly(Libraries.jetBrainAnnotation)
 
@@ -331,7 +317,7 @@ fun DependencyHandler.addBaseDynamicFeatureModuleDependencies() {
 
     //Other
     implementation(Libraries.threetenabp)
-    implementation(Libraries.timberVersion)
+    implementation(Libraries.timber)
 }
 
 fun DependencyHandler.addUnitTestDependencies() {
@@ -368,6 +354,15 @@ fun DependencyHandler.addUITestDependencies() {
     androidTestImplementation(TestLibraries.hiltTesting)
     kaptAndroidTest(Libraries.hiltCompiler)
     kaptAndroidTest(Libraries.daggerHiltAndroidCompiler)
+    androidTestImplementation(TestLibraries.espresso)
+    androidTestImplementation(TestLibraries.espressoContrib)
+    androidTestImplementation(TestLibraries.espressoIntents)
+    androidTestImplementation(TestLibraries.espressoAccessibility)
+    androidTestImplementation(TestLibraries.espressoWeb)
+    androidTestImplementation(TestLibraries.espressoConcurrent)
+    androidTestImplementation(TestLibraries.espressoIdelingResource)
+    androidTestImplementation(TestLibraries.idelingResource)
+    androidTestImplementation(TestLibraries.uiAutomator)
 
     androidTestUtil(TestLibraries.orchestrator)
 }
