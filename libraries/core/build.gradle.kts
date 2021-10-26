@@ -15,12 +15,11 @@ jacoco {
 }
 
 hilt {
-    enableExperimentalClasspathAggregation = true
-    enableTransformForLocalTests = true
+    enableAggregatingTask = true
 }
 
 android {
-    compileSdkVersion(AndroidSdk.compileVersion)
+    compileSdk = AndroidSdk.compileVersion
 
     useLibrary("android.test.runner")
     useLibrary("android.test.base")
@@ -28,7 +27,6 @@ android {
 
     lint {
         disable("MissingTranslation")
-        isCheckReleaseBuilds = false /* https://dagger.dev/hilt/gradle-setup */
         isAbortOnError = false
     }
 

@@ -1,14 +1,14 @@
-const val kotlinVersion = "1.5.30"
-const val hiltVersion = "2.38.1"
+const val kotlinVersion = "1.5.31"
+const val hiltVersion = "2.39.1"
 const val navigationVersion = "2.3.5"
-const val objectboxVersion = "2.9.1"
+const val objectboxVersion = "3.0.1"
 const val ktLintVersion = "0.41.0"
 const val okHttpVersion = "4.9.1"
 const val pagingVersion = "3.0.1"
 
 object BuildPlugins {
     object Versions {
-        const val buildToolsVersion = "7.0.2"
+        const val buildToolsVersion = "7.0.3"
         const val spotlessVersion = "5.14.2"
         const val gmsVersion = "4.3.5"
         const val firebasePerfVersion = "1.4.0"
@@ -48,7 +48,7 @@ object BuildPlugins {
 }
 
 object AndroidSdk {
-    const val minVersion = 23
+    const val minVersion = 24
     const val compileVersion = 31
     const val targetVersion = compileVersion
 }
@@ -91,7 +91,7 @@ object Libraries {
         const val hiltJetpackVersion = "1.0.0"
 
         const val lifecycleVersion = "2.3.1"
-        const val workManagerVersion = "2.6.0-rc01"
+        const val workManagerVersion = "2.7.0"
         const val activityVersion = "1.3.1"
         const val fragmentVersion = "1.3.6"
         const val securityCryptoVersion = "1.1.0-alpha03"
@@ -103,10 +103,10 @@ object Libraries {
 
         const val roomVersion = "2.3.0"
 
-        const val firebaseBoMVersion = "28.4.0"
+        const val firebaseBoMVersion = "28.4.2"
 
         const val coroutineVersion = "1.4.2"
-        const val arrowVersion = "0.13.2"
+        const val arrowVersion = "1.0.0"
         const val jetbrainAnnotationVersion = "13.0"
 
         const val storeVersion = "4.0.2-KT15"
@@ -236,7 +236,9 @@ object Libraries {
     const val coroutineRxJava3 =
         "org.jetbrains.kotlinx:kotlinx-coroutines-rx3:${Versions.coroutineVersion}"
     const val jetBrainAnnotation = "org.jetbrains:annotations:${Versions.jetbrainAnnotationVersion}"
-    const val arrowCore = "io.arrow-kt:arrow-core:${Versions.arrowVersion}"
+    const val arrowBoM = "io.arrow-kt:arrow-stack:${Versions.arrowVersion}"
+    const val arrowCore = "io.arrow-kt:arrow-core"
+    const val arrowOptic = "io.arrow-kt:arrow-optics"
     const val arrowMeta = "io.arrow-kt:arrow-meta:${Versions.arrowVersion}"
 
     //Store
@@ -320,22 +322,21 @@ object TestLibraries {
     object Versions {
         const val jsonVersion = "20190722"
         const val jUnitVersion = "4.13.1"
-        const val coreTestVersion = "1.3.0"
-        const val testRunnerVersion = "1.3.0"
-        const val testRuleVersion = "1.3.0"
-        const val extJunitVersion = "1.1.2"
-        const val truthVersion = "1.3.0"
+        const val coreTestVersion = "1.4.0"
+        const val testRunnerVersion = "1.4.0"
+        const val testRuleVersion = "1.4.0"
+        const val extJunitVersion = "1.1.3"
+        const val truthVersion = "1.4.0"
         const val archCoreTestingVersion = "2.1.0"
-        const val mockitoVersion = "3.8.0"
         const val mockkVersion = "1.10.6"
-        const val mockitoKotlinVersion = "2.2.0"
+        const val fakerVersion = "1.7.0"
         const val liveDataTestingVersion = "1.1.2"
         const val robolectricVersion = "4.5.1"
 
-        const val espressoVersion = "3.3.0"
+        const val espressoVersion = "3.4.0"
         const val idelingResourceVersion = "1.0.0"
         const val uiAutomatorVersion = "2.2.0"
-        const val orchestratorVersion = "1.3.0"
+        const val orchestratorVersion = "1.4.0"
     }
 
     const val json = "org.json:json:${Versions.jsonVersion}"
@@ -348,11 +349,8 @@ object TestLibraries {
     const val archCoreTest = "androidx.arch.core:core-testing:${Versions.archCoreTestingVersion}"
     const val pagingCommon = "androidx.paging:paging-common:${pagingVersion}"
     const val kotlinJunit = "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}"
-    const val mockitoCore = "org.mockito:mockito-core:${Versions.mockitoVersion}"
-    const val mockitoInline = "org.mockito:mockito-inline:${Versions.mockitoVersion}"
-    const val mockitoKotlin =
-        "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlinVersion}"
     const val mockk = "io.mockk:mockk:${Versions.mockkVersion}"
+    const val faker = "io.github.serpro69:kotlin-faker:${Versions.fakerVersion}"
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${okHttpVersion}"
     const val liveDataTesting = "com.jraska.livedata:testing-ktx:${Versions.liveDataTestingVersion}"
     const val robolectric = "org.robolectric:robolectric:${Versions.robolectricVersion}"

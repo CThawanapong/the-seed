@@ -22,7 +22,7 @@ jacoco {
 }
 
 hilt {
-    enableExperimentalClasspathAggregation = true
+    enableAggregatingTask = true
 }
 
 android {
@@ -34,7 +34,6 @@ android {
 
     lint {
         disable("MissingTranslation")
-        isCheckReleaseBuilds = false /* https://dagger.dev/hilt/gradle-setup */
         isAbortOnError = false
     }
 
@@ -229,29 +228,6 @@ afterEvaluate {
                 "**/Dagger*Component\$Builder.class", // Covers component builders
                 "**/*Module_*Factory.class",
                 "**/di/**", // Dependencies Injection
-                "**/com/nongcalcal/app/base/adpter/**",
-                "**/com/nongcalcal/app/base/behavior/**",
-                "**/com/nongcalcal/app/base/decoration/**",
-                "**/com/nongcalcal/app/base/epoxy/**",
-                "**/com/nongcalcal/app/base/event/**",
-                "**/com/nongcalcal/app/base/extension/**",
-                "**/com/nongcalcal/app/base/helper/**",
-                "**/com/nongcalcal/app/base/imagegetter/**",
-                "**/com/nongcalcal/app/base/initializer/**",
-                "**/com/nongcalcal/app/base/interceptor/**",
-                "**/com/nongcalcal/app/base/interfaces/**",
-                "**/com/nongcalcal/app/base/transformation/**",
-                "**/com/nongcalcal/app/base/view/**",
-                "**/com/nongcalcal/app/base/view/action_bottom_sheet/**",
-                "**/com/nongcalcal/app/base/*Template*.*",
-                "**/com/nongcalcal/app/base/*FragmentType*.*",
-                "**/com/nongcalcal/app/base/*Adapter*.*",
-                "**/com/nongcalcal/app/base/*Tree*.*",
-                "**/com/nongcalcal/app/base/*SavedState*.*",
-                "**/com/nongcalcal/app/base/*Service*.*",
-                "**/com/nongcalcal/app/base/*Glide*.*",
-                "**/com/nongcalcal/app/base/*BaseModel*.*",
-                "**/com/nongcalcal/app/crash/**",
                 "**/*JsonAdapter.*", // Moshi Generate Adapter
                 "**/*Model_.*", // Epoxy Generate model
                 "**/controller/**", // Epoxy Model File
@@ -295,13 +271,6 @@ afterEvaluate {
 
 kapt {
     correctErrorTypes = true
-    useBuildCache = true
-    javacOptions {
-        // These options are normally set automatically via the Hilt Gradle plugin, but we
-        // set them manually to workaround a bug in the Kotlin 1.5.20
-        option("-Adagger.fastInit=ENABLED")
-        option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
-    }
 }
 
 easylauncher {
@@ -357,7 +326,6 @@ dependencies {
     implementation(project(Modules.AndroidLibrary.DATA))
     implementation(project(Modules.AndroidLibrary.DOMAIN))
     implementation(project(Modules.AndroidLibrary.CORE))
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
 
     addAppModuleDependencies()
     addUnitTestDependencies()

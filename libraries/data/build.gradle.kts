@@ -15,8 +15,7 @@ jacoco {
 }
 
 hilt {
-    enableExperimentalClasspathAggregation = true
-    enableTransformForLocalTests = true
+    enableAggregatingTask = true
 }
 
 android {
@@ -28,7 +27,6 @@ android {
 
     lint {
         disable("MissingTranslation")
-        isCheckReleaseBuilds = false /* https://dagger.dev/hilt/gradle-setup */
         isAbortOnError = false
     }
 
