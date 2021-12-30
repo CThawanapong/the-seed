@@ -1,12 +1,13 @@
 package org.fealous.theseed.base
 
-import android.app.ProgressDialog
+
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import org.fealous.core.base.BaseAndroidViewModel
@@ -37,7 +38,7 @@ abstract class BaseActivity : AppCompatActivity(), ConsumableEvent {
 
     // Data Members
     protected var subscriptions = CompositeDisposable()
-    private val progressDialog: ProgressDialog by lazy { ProgressDialog(this) }
+    private val progressDialog: AlertDialog by lazy { AlertDialog.Builder(this).create() }
 
     override fun attachBaseContext(newBase: Context?) {
         newBase?.let {

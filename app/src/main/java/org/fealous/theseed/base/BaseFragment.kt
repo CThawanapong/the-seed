@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AlertDialog
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -81,7 +82,7 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) :
     lateinit var analyticsProvider: AnalyticsProvider
 
     // Data Members
-    private val progressDialog: ProgressDialog by lazy { ProgressDialog(context) }
+    private val progressDialog: AlertDialog by lazy { AlertDialog.Builder(context).create() }
     protected var subscriptions = CompositeDisposable()
     protected abstract val screenName: String
 
