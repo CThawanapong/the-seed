@@ -13,7 +13,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.fealous.core.base.moshi.NullSafetyJsonAdapter
+import org.fealous.core.base.moshi.DefaultIfNullFactory
 import org.fealous.domain.SchedulersFacade
 import org.fealous.theseed.BuildConfig
 import retrofit2.Retrofit
@@ -40,7 +40,7 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideMoshi() = Moshi.Builder()
-        .add(NullSafetyJsonAdapter())
+        .add(DefaultIfNullFactory())
         .add(DeserializeOnly.ADAPTER_FACTORY)
         .add(SerializeOnly.ADAPTER_FACTORY)
         .build()

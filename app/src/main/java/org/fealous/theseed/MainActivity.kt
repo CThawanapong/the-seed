@@ -2,18 +2,13 @@ package org.fealous.theseed
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
-import androidx.core.view.updatePadding
+import androidx.core.view.*
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -105,7 +100,7 @@ class MainActivity : BaseActivity() {
                 windowInsets
             }
 
-            findNavController(R.id.navHostFragment).let {
+            (supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment).navController.let {
                 bottomNavigation.apply {
                     setupWithNavController(it)
                 }
@@ -122,33 +117,21 @@ class MainActivity : BaseActivity() {
     }
 
     private fun hideUIBar() {
-        // for new api versions.
-        val decorView = window.decorView
-        val uiOptions = mSystemUiVisibilityProvider.fullScreenImmersiveUiVisiblity
-        window.statusBarColor = ContextCompat.getColor(this, R.color.colorOnPrimary)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            window.attributes.layoutInDisplayCutoutMode =
-                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowInsetsControllerCompat(window, window.decorView).let { controller ->
+            controller.hide(WindowInsetsCompat.Type.systemBars())
+            controller.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
-
-        decorView.systemUiVisibility = uiOptions
+        window.statusBarColor = Color.TRANSPARENT
     }
 
     private fun showUIBar() {
-        window.decorView.systemUiVisibility = mSystemUiVisibilityProvider.visibleSystemUiVisibility
-
-        val winParams = window.attributes
-        var flags = winParams.flags
-        flags = flags and WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS.inv()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            winParams.layoutInDisplayCutoutMode =
-                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT
-        }
-        winParams.flags = flags
-        window.attributes = winParams
-        window.statusBarColor = Color.TRANSPARENT
-        window.decorView.systemUiVisibility =
-            (window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
+        WindowInsetsControllerCompat(
+            window,
+            window.decorView
+        ).show(WindowInsetsCompat.Type.systemBars())
     }
 
     private fun showSnackBar(message: String, length: Int) {

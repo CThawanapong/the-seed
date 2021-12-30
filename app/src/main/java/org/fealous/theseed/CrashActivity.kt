@@ -17,6 +17,7 @@ import io.reactivex.rxjava3.kotlin.plusAssign
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import org.fealous.core.base.delegate.viewBinding
 import org.fealous.theseed.databinding.ActivityCrashBinding
+import timber.log.Timber
 
 @AndroidEntryPoint
 class CrashActivity : AppCompatActivity(R.layout.activity_crash) {
@@ -65,6 +66,7 @@ class CrashActivity : AppCompatActivity(R.layout.activity_crash) {
 
                 subscriptions += buttonStacktrace.clicks()
                     .subscribeBy(
+                        onError = Timber::e,
                         onNext = {
                             val dialog = AlertDialog.Builder(this@CrashActivity)
                                 .setTitle(R.string.customactivityoncrash_error_activity_error_details_title)

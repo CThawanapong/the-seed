@@ -5,7 +5,6 @@ buildscript {
         mavenCentral()
         gradlePluginPortal()
         maven("https://www.jitpack.io")
-        jcenter()
     }
     dependencies {
         classpath(BuildPlugins.androidGradlePlugin)
@@ -30,7 +29,6 @@ allprojects {
         google()
         mavenCentral()
         maven("https://www.jitpack.io")
-        jcenter()
     }
 }
 
