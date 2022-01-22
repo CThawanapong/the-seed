@@ -30,10 +30,16 @@ class DefaultIfNullFactory : JsonAdapter.Factory {
         if (type === String::class.java) return delegate
         return object : JsonAdapter<Any>() {
             override fun fromJson(reader: JsonReader): Any? {
-                return if (reader.peek() == JsonReader.Token.BEGIN_OBJECT) {
-                    delegate.fromJson(JsonReaderSkipNullValuesWrapper(reader))
-                } else {
-                    delegate.fromJson(reader)
+                return when {
+                    reader.peek() == JsonReader.Token.BEGIN_OBJECT -> {
+                        delegate.fromJson(JsonReaderSkipNullValuesWrapper(reader))
+                    }
+                    reader.peek() == JsonReader.Token.BEGIN_ARRAY -> {
+                        (delegate.fromJson(reader) as? ArrayList<*>)?.filterNotNull()
+                    }
+                    else -> {
+                        delegate.fromJson(reader)
+                    }
                 }
             }
             override fun toJson(writer: JsonWriter, value: Any?) {
