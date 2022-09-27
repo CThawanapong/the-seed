@@ -33,8 +33,8 @@ android {
     useLibrary("android.test.mock")
 
     lint {
-        disable("MissingTranslation")
-        isAbortOnError = false
+        disable.add("MissingTranslation")
+        abortOnError = false
     }
 
     compileOptions {
@@ -288,27 +288,31 @@ spotless {
     kotlin {
         target("**/*.kt")
         trimTrailingWhitespace()
-        ktlint(ktLintVersion).userData(
-            mapOf(
-                "android" to "true",
-                "color" to "true",
-                "insert_final_newline" to "false",
-                "reporter" to "checkstyle",
-                "disabled_rules" to "no-wildcard-imports,max-line-length,import-ordering"
+        ktlint(ktLintVersion)
+            .setUseExperimental(true)
+            .editorConfigOverride(
+                mapOf(
+                    "android" to "true",
+                    "color" to "true",
+                    "reporter" to "checkstyle",
+                    "insert_final_newline" to "false",
+                    "disabled_rules" to "no-wildcard-imports,max-line-length,import-ordering,package-name"
+                )
             )
-        )
     }
     kotlinGradle {
         target("*.gradle.kts", "additionalScripts/*.gradle.kts")
-        ktlint(ktLintVersion).userData(
-            mapOf(
-                "android" to "true",
-                "color" to "true",
-                "insert_final_newline" to "false",
-                "reporter" to "checkstyle",
-                "disabled_rules" to "no-wildcard-imports,max-line-length,import-ordering"
+        ktlint(ktLintVersion)
+            .setUseExperimental(true)
+            .editorConfigOverride(
+                mapOf(
+                    "android" to "true",
+                    "color" to "true",
+                    "reporter" to "checkstyle",
+                    "insert_final_newline" to "false",
+                    "disabled_rules" to "no-wildcard-imports,max-line-length,import-ordering,package-name"
+                )
             )
-        )
     }
     format("xml") {
         target(

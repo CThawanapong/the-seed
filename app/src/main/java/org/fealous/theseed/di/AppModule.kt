@@ -2,11 +2,12 @@ package org.fealous.theseed.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Build
 import android.view.WindowManager
 import androidx.annotation.XmlRes
+import androidx.preference.PreferenceManager
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import androidx.security.crypto.MasterKeys.AES256_GCM_SPEC
 import com.airbnb.epoxy.EpoxyAsyncUtil
 import com.airbnb.epoxy.GlidePreloadRequestHolder
 import com.airbnb.epoxy.glidePreloader
@@ -108,15 +109,18 @@ class AppModule {
     @Singleton
     @Provides
     fun provideEncryptedSharePreference(@ApplicationContext context: Context): SharedPreferences {
-        return EncryptedSharedPreferences.create(
-            context,
-            SHARE_PREF,
-            MasterKey.Builder(context)
-                .setKeyGenParameterSpec(AES256_GCM_SPEC)
-                .build(),
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
+        return when {
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.M -> EncryptedSharedPreferences.create(
+                context,
+                SHARE_PREF,
+                MasterKey.Builder(context, MasterKey.DEFAULT_MASTER_KEY_ALIAS)
+                    .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                    .build(),
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
+            else -> PreferenceManager.getDefaultSharedPreferences(context)
+        }
     }
 
     @Singleton

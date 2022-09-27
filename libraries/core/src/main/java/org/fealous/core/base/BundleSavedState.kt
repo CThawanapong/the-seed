@@ -33,8 +33,8 @@ class BundleSavedState : AbsSavedState {
 
     constructor(superState: Parcelable) : super(superState)
 
-    override fun writeToParcel(out: Parcel?, flags: Int) {
+    override fun writeToParcel(out: Parcel, flags: Int) {
         super.writeToParcel(out, flags)
-        out?.writeBundle(bundle)
+        out.writeBundle(bundle)
     }
 }

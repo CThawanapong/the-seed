@@ -26,8 +26,8 @@ android {
     useLibrary("android.test.mock")
 
     lint {
-        disable("MissingTranslation")
-        isAbortOnError = false
+        disable.add("MissingTranslation")
+        abortOnError = false
     }
 
     compileOptions {

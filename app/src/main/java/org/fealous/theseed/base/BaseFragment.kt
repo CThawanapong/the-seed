@@ -1,6 +1,5 @@
 package org.fealous.theseed.base
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -165,7 +164,8 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) :
             when {
                 collapsingToolbarLayout != null -> {
                     collapsingToolbarLayout.setupWithNavController(
-                        toolbar, findNavController(),
+                        toolbar,
+                        findNavController(),
                         AppBarConfiguration(
                             setOf(
                                 R.id.fragmentTemplate

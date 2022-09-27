@@ -37,6 +37,13 @@ class BottomNavigationBehavior : CoordinatorLayout.Behavior<BottomNavigationView
         }
     }
 
+    @Deprecated(
+        "Deprecated in Java",
+        ReplaceWith(
+            "nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL",
+            "androidx.core.view.ViewCompat"
+        )
+    )
     override fun onStartNestedScroll(
         coordinatorLayout: CoordinatorLayout,
         child: BottomNavigationView,
@@ -47,6 +54,7 @@ class BottomNavigationBehavior : CoordinatorLayout.Behavior<BottomNavigationView
         return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onNestedPreScroll(
         coordinatorLayout: CoordinatorLayout,
         child: BottomNavigationView,
