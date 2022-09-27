@@ -2,14 +2,14 @@ const val kotlinVersion = "1.7.10"
 const val hiltVersion = "2.44"
 const val navigationVersion = "2.5.2"
 const val objectboxVersion = "3.3.1"
-const val ktLintVersion = "0.41.0"
+const val ktLintVersion = "0.47.1"
 const val okHttpVersion = "4.9.3"
 const val pagingVersion = "3.1.1"
 
 object BuildPlugins {
     object Versions {
         const val buildToolsVersion = "7.3.0"
-        const val spotlessVersion = "5.14.2"
+        const val spotlessVersion = "6.11.0"
         const val gmsVersion = "4.3.14"
         const val firebasePerfVersion = "1.4.1"
         const val firebaseCrashlyticsVersion = "2.9.2"

@@ -164,7 +164,8 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) :
             when {
                 collapsingToolbarLayout != null -> {
                     collapsingToolbarLayout.setupWithNavController(
-                        toolbar, findNavController(),
+                        toolbar,
+                        findNavController(),
                         AppBarConfiguration(
                             setOf(
                                 R.id.fragmentTemplate
