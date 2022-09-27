@@ -1,20 +1,20 @@
-const val kotlinVersion = "1.5.31"
-const val hiltVersion = "2.39.1"
-const val navigationVersion = "2.3.5"
-const val objectboxVersion = "3.0.1"
+const val kotlinVersion = "1.7.10"
+const val hiltVersion = "2.44"
+const val navigationVersion = "2.5.2"
+const val objectboxVersion = "3.3.1"
 const val ktLintVersion = "0.41.0"
-const val okHttpVersion = "4.9.1"
-const val pagingVersion = "3.0.1"
+const val okHttpVersion = "4.9.3"
+const val pagingVersion = "3.1.1"
 
 object BuildPlugins {
     object Versions {
-        const val buildToolsVersion = "7.0.3"
+        const val buildToolsVersion = "7.3.0"
         const val spotlessVersion = "5.14.2"
-        const val gmsVersion = "4.3.5"
-        const val firebasePerfVersion = "1.4.0"
-        const val firebaseCrashlyticsVersion = "2.7.1"
+        const val gmsVersion = "4.3.14"
+        const val firebasePerfVersion = "1.4.1"
+        const val firebaseCrashlyticsVersion = "2.9.2"
         const val easyLauncherVersion = "4.0.0"
-        const val jacocoVersion = "0.8.7"
+        const val jacocoVersion = "0.8.8"
     }
 
     const val jacocoGradlePlugin = "org.jacoco:org.jacoco.core:${Versions.jacocoVersion}"
@@ -49,7 +49,7 @@ object BuildPlugins {
 
 object AndroidSdk {
     const val minVersion = 24
-    const val compileVersion = 31
+    const val compileVersion = 33
     const val targetVersion = compileVersion
 }
 
@@ -67,76 +67,76 @@ object Libraries {
     object Versions {
         const val coreDesugarVersion = "1.1.5"
         const val multidexVersion = "2.0.1"
-        const val ktxVersion = "1.6.0"
-        const val appCompatVersion = "1.3.1"
+        const val ktxVersion = "1.9.0"
+        const val appCompatVersion = "1.5.1"
         const val cardViewVersion = "1.0.0"
         const val recyclerViewVersion = "1.2.1"
         const val gridLayoutVersion = "1.0.0"
         const val annotationVersion = "1.2.0"
-        const val browserVersion = "1.3.0"
-        const val constraintLayoutVersion = "2.1.0"
-        const val materialVersion = "1.4.0"
+        const val browserVersion = "1.4.0"
+        const val constraintLayoutVersion = "2.1.4"
+        const val materialVersion = "1.6.1"
         const val installReferrerVersion = "2.2"
-        const val tinkVersion = "1.5.0"
-        const val guavaVersion = "30.1.1-android"
+        const val tinkVersion = "1.7.0"
+        const val guavaVersion = "31.1-android"
 
-        const val playServiceBaseVersion = "17.6.0"
-        const val playServiceFitnessVersion = "20.0.0"
-        const val playServiceAuthVersion = "19.0.0"
+        const val playServiceBaseVersion = "18.1.0"
+        const val playServiceFitnessVersion = "21.1.0"
+        const val playServiceAuthVersion = "20.3.0"
         const val playServiceIIDVersion = "17.0.0"
-        const val playServiceTagManagerVersion = "17.0.0"
-        const val playCoreVersion = "1.10.0"
+        const val playServiceTagManagerVersion = "18.0.2"
+        const val playCoreVersion = "1.10.3"
         const val playCoreKtxVersion = "1.8.1"
 
         const val hiltJetpackVersion = "1.0.0"
 
-        const val lifecycleVersion = "2.3.1"
-        const val workManagerVersion = "2.7.0"
-        const val activityVersion = "1.3.1"
-        const val fragmentVersion = "1.3.6"
+        const val lifecycleVersion = "2.5.1"
+        const val workManagerVersion = "2.7.1"
+        const val activityVersion = "1.6.0"
+        const val fragmentVersion = "1.5.3"
         const val securityCryptoVersion = "1.1.0-alpha03"
         const val viewPagerVersion = "1.1.0-beta01"
-        const val startupVersion = "1.1.0"
-        const val windowVersion = "1.0.0-beta01"
+        const val startupVersion = "1.1.1"
+        const val windowVersion = "1.0.0"
         const val biometricVersion = "1.1.0"
-        const val preferenceVersion = "1.1.1"
+        const val preferenceVersion = "1.2.0"
 
-        const val roomVersion = "2.3.0"
+        const val roomVersion = "2.4.3"
 
-        const val firebaseBoMVersion = "28.4.2"
+        const val firebaseBoMVersion = "30.5.0"
 
-        const val coroutineVersion = "1.4.2"
+        const val coroutineVersion = "1.6.4"
         const val arrowVersion = "1.0.0"
         const val jetbrainAnnotationVersion = "13.0"
 
-        const val storeVersion = "4.0.2-KT15"
+        const val storeVersion = "4.0.5"
 
-        const val okioVersion = "2.10.0"
-        const val moshiVersion = "1.12.0"
+        const val okioVersion = "3.2.0"
+        const val moshiVersion = "1.14.0"
         const val moshiLazyAdapterVersion = "2.2"
         const val retrofitVersion = "2.9.0"
 
-        const val rxJavaVersion = "3.0.13"
+        const val rxJavaVersion = "3.1.5"
         const val rxKotlinVersion = "3.0.1"
         const val rxAndroidVersion = "3.0.0"
         const val rxBindingVersion = "4.0.0"
-        const val rxJavaExtensionVersion = "3.0.1"
-        const val rxJavaBridgeVersion = "3.0.0"
-        const val rxRelayVersion = "3.0.0"
+        const val rxJavaExtensionVersion = "3.1.1"
+        const val rxJavaBridgeVersion = "3.0.2"
+        const val rxRelayVersion = "3.0.1"
         const val rxPermission = "0.12"
         const val rxValidator = "1.3"
 
-        const val epoxyVersion = "4.6.2"
-        const val glideVersion = "4.12.0"
+        const val epoxyVersion = "4.6.3"
+        const val glideVersion = "4.13.2"
         const val shimmerVersion = "0.5.0"
 
-        const val threeTenAbpVersion = "1.3.1"
-        const val timberVersion = "4.7.1"
+        const val threeTenAbpVersion = "1.4.0"
+        const val timberVersion = "5.0.1"
         const val nineOldAndroidVersion = "2.4.0"
         const val customActivityOnCrashVersion = "2.3.0"
-        const val eventEmitterVersion = "1.2.0"
+        const val eventEmitterVersion = "1.3.0"
 
-        const val chuckerVersion = "3.5.1"
+        const val chuckerVersion = "3.5.2"
     }
 
     const val coreDesugar = "com.android.tools:desugar_jdk_libs:${Versions.coreDesugarVersion}"

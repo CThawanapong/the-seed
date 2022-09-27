@@ -1,6 +1,5 @@
 package org.fealous.theseed.base
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

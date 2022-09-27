@@ -36,6 +36,13 @@ class SnackBarPositionBehavior : CoordinatorLayout.Behavior<View> {
         }
     }
 
+    @Deprecated(
+        "Deprecated in Java",
+        ReplaceWith(
+            "nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL",
+            "androidx.core.view.ViewCompat"
+        )
+    )
     override fun onStartNestedScroll(
         coordinatorLayout: CoordinatorLayout,
         child: View,
@@ -46,6 +53,7 @@ class SnackBarPositionBehavior : CoordinatorLayout.Behavior<View> {
         return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onNestedPreScroll(
         coordinatorLayout: CoordinatorLayout,
         child: View,
